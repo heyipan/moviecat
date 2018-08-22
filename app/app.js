@@ -11,6 +11,6 @@
 		'movieCat.rankingList'
 	])
 	moviecat.config(['$routeProvider', function($routeProvider) {
-		$routeProvider.otherwise({redirectTo: '/hotShowing'});
+		$routeProvider.otherwise({redirectTo: '/hotShowing/1'});
 	}]);
 })(angular)

@@ -12,7 +12,14 @@
 		});
 	}]);
 
-	module.controller('rankingListController', ['$scope',function ($scope) {
-		$scope.title = "排行榜50"
+	module.controller('rankingListController', ['$scope','$http',function ($scope,$http) {
+		$scope.title = "排行榜50";
+
+
+		$http.get("../app/top_data.json").then(function (response) {
+			$scope.subjects = response.data.subjects;
+		},function (response) {
+
+		})
 	}]);
 })(angular);

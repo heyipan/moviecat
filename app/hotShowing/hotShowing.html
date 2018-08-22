@@ -22,3 +22,22 @@
 		</div>
 	</a>
 </div>
+<div ng-show="!loading">
+	<nav>
+		<ul class="pager">
+			<li ng-class="{disabled:page <= 1}"><a  ng-click="go(page - 1 )">« Previous</a></li>
+			<li ng-class="{disabled:page >= pageNum }"><a  ng-click="go(page + 1 )">Next »</a></li>
+		</ul>
+	</nav>
+	<p >总共：{{total}}条记录, {{page}} / {{pageNum}}页</p>
+
+</div>
+
+<!--加载-->
+<div class="spinner" ng-if="loading">
+	<div class="rect1"></div>
+	<div class="rect2"></div>
+	<div class="rect3"></div>
+	<div class="rect4"></div>
+	<div class="rect5"></div>
+</div>

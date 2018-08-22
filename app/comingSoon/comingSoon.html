@@ -1,2 +1,25 @@
 <h1 class="page-header">{{title}}</h1>
-
+<h2 class="page-header" ng-if="message">{{message}}</h2>
+<div class="list-group">
+	<a href="#" class="list-group-item" ng-repeat="item in subjects">
+		<span class="badge">{{item.rating.average}}</span>
+		<div class="media">
+			<div class="media-left">
+				<img class="media-object" ng-src="{{item.images.small}}" alt="{{item.title}}">
+			</div>
+			<div class="media-body">
+				<h3 class="media-heading">{{item.title}}</h3>
+				<div>
+					<p>导演：
+						<span ng-repeat="director in item.directors">{{director.name}}
+							<span ng-if="!$last">、</span>
+						</span>
+					</p>
+				</div>
+				<div>
+					<p>类型：{{item.genres.join("、")}}</p>
+				</div>
+			</div>
+		</div>
+	</a>
+</div>
