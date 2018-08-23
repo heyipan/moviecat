@@ -34,11 +34,18 @@
 </nav>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar">
+		<!--<div class="col-sm-3 col-md-2 sidebar">
 			<ul class="nav nav-sidebar" ng-controller="toggleController">
 				<li ng-class="{active:toggle == 'in_theaters'}"><a href="#/in_theaters">正在热映</a></li>
 				<li ng-class="{active:toggle == 'coming_soon'}"><a href="#/coming_soon/1">即将上映</a></li>
 				<li ng-class="{active:toggle == 'top250'}"><a href="#/top250/1">排行榜50</a></li>
+			</ul>
+		</div>-->
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar" >
+				<li auto-focus><a href="#/in_theaters">正在热映</a></li>
+				<li auto-focus><a href="#/coming_soon/1">即将上映</a></li>
+				<li auto-focus><a href="#/top250/1">排行榜50</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -52,6 +59,7 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="app.js"></script>
 <script src="components/http.js"></script>
+<script src="components/autoFocus.js"></script>
 <script src="movie_list/controller.js"></script>
 </body>
 </html>
