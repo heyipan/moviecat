@@ -5,28 +5,28 @@
 	 * */
 
 
-	var module = angular.module('movieCat.hotShowing', ['ngRoute','movieCat.services.http']);
+	var module = angular.module('movieCat.movie_list', ['ngRoute','movieCat.services.http']);
 
 	module.config(['$routeProvider', function ($routeProvider) {
-		$routeProvider.when('/hotShowing/:page', {
-			templateUrl: 'hotShowing/hotShowing.html',
-			controller: 'hotShowingController'
+		$routeProvider.when('/:category/:page', {
+			templateUrl: 'movie_list/movie_list.html',
+			controller: 'movie_list'
 		});
 	}]);
 
-	module.controller('hotShowingController', [
+	module.controller('movie_list', [
 		'$scope',
 		'$route',
 		'$routeParams',
 		'httpService',
 		function ($scope,$route,$routeParams,httpService) {
-		$scope.title = "正在热映";
 		$scope.loading = true;
 		var count = 5;//每页的数量
 		var page = parseInt($routeParams.page);//当前的页数
-		var start   = (page - 1) * count;
-		httpService.jsonp("https://api.douban.com/v2/movie/in_theaters",{start:start,count:count},function (data) {
-			$scope.subjects = data.subjects;
+		var start   = (page - 1) * count;//开始
+		httpService.jsonp("https://api.douban.com/v2/movie/"+$routeParams.category,{start:start,count:count},function (data) {
+			$scope.subjects = data.subjects;//电影条目
+			$scope.title = data.title;//列表title
 			$scope.total = data.total;//总的数据数
 			$scope.pageNum = Math.ceil($scope.total/count);
 			$scope.page = page;

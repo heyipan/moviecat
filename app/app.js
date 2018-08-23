@@ -6,11 +6,9 @@
 	* */
 	var moviecat = angular.module('movieCat', [
 		'ngRoute',
-		'movieCat.hotShowing',
-		'movieCat.comingSoon',
-		'movieCat.rankingList'
-	])
+		'movieCat.movie_list',
+	]);
 	moviecat.config(['$routeProvider', function($routeProvider) {
-		$routeProvider.otherwise({redirectTo: '/hotShowing/1'});
+		$routeProvider.otherwise({redirectTo: '/in_theaters/1'});
 	}]);
-})(angular)
+})(angular);
