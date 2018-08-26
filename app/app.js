@@ -12,6 +12,14 @@
 	movieCat.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.otherwise({redirectTo: '/in_theaters/1'});
 	}]);
+
+	movieCat.controller("ctl",['$scope','$route',function ($scope,$route) {
+
+		$scope.input = '';
+		$scope.search = function () {
+			$route.updateParams({q: $scope.input});
+		}
+	}]);
 /*
 	movieCat.controller("toggleController",['$scope','$location',function ($scope,$location) {
 		$scope.$location = $location;
