@@ -6,6 +6,7 @@
 	* */
 	var movieCat = angular.module('movieCat', [
 		'ngRoute',
+		'movieCat.movie_detail',
 		'movieCat.movie_list',
 		'movieCat.directives'
 	]);
@@ -13,11 +14,11 @@
 		$routeProvider.otherwise({redirectTo: '/in_theaters/1'});
 	}]);
 
-	movieCat.controller("ctl",['$scope','$route',function ($scope,$route) {
+	movieCat.controller("searchController",['$scope','$route',function ($scope,$route) {
 
 		$scope.input = '';
 		$scope.search = function () {
-			$route.updateParams({q: $scope.input});
+			$route.updateParams({category:'search',q: $scope.input});
 		}
 	}]);
 /*
