@@ -20,10 +20,10 @@
 		'$route',
 		'$routeParams',
 		'httpService',
-		function ($scope,$route,$routeParams,httpService) {
+		'appConfig',
+		function ($scope,$route,$routeParams,httpService,appConfig) {
 			$scope.loading = true;
-
-			httpService.jsonp("https://api.douban.com/v2/movie/subject/"+$routeParams.id,{},function (data) {
+			httpService.jsonp(appConfig.detailAddress+$routeParams.id,{},function (data) {
 				$scope.subjects = data;
 				$scope.title = data.title;//列表title
 				$scope.loading = false;

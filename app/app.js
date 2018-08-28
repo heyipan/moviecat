@@ -10,15 +10,26 @@
 		'movieCat.movie_list',
 		'movieCat.directives'
 	]);
+	movieCat.constant("appConfig",{
+		'pageSize':5,
+		'listAddress':"https://api.douban.com/v2/movie/",
+		'detailAddress':"https://api.douban.com/v2/movie/subject/"
+
+	});
 	movieCat.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.otherwise({redirectTo: '/in_theaters/1'});
 	}]);
 
-	movieCat.controller("searchController",['$scope','$route',function ($scope,$route) {
+	movieCat.controller("searchController",['$scope','$window','$location','$route',function ($scope,$window,$location,$route) {
 
 		$scope.input = '';
 		$scope.search = function () {
-			$route.updateParams({category:'search',q: $scope.input});
+
+			$scope.input = '';
+			$scope.search = function () {
+				$route.updateParams({category:'search',q: $scope.input});
+			}
+
 		}
 	}]);
 /*

@@ -20,12 +20,13 @@
 		'$route',
 		'$routeParams',
 		'httpService',
-		function ($scope,$route,$routeParams,httpService) {
+		'appConfig',
+		function ($scope,$route,$routeParams,httpService,appConfig) {
 		$scope.loading = true;
-		var count = 5;//每页的数量
+		var count = appConfig.pageSize;//每页的数量
 		var page = parseInt($routeParams.page);//当前的页数
 		var start   = (page - 1) * count;//开始
-		httpService.jsonp("https://api.douban.com/v2/movie/"+$routeParams.category,{start:start,count:count,q:$routeParams.q},function (data) {
+		httpService.jsonp(appConfig.listAddress+$routeParams.category,{start:start,count:count,q:$routeParams.q},function (data) {
 			$scope.subjects = data.subjects;//电影条目
 			$scope.title = data.title;//列表title
 			$scope.total = data.total;//总的数据数
